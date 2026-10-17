@@ -1,0 +1,336 @@
+{
+  "config": {
+    "seed": 42,
+    "days": 7,
+    "grid_period_s": 60
+  },
+  "ingest": {
+    "signal_rows_raw": 91383,
+    "signal_rows_rejected": 3,
+    "unknown_tag_rows": 50,
+    "lab_rows_raw": 239,
+    "duplicates_removed": 182
+  },
+  "detection": [
+    {
+      "fault": "spike",
+      "true_positive": 60,
+      "false_positive": 3,
+      "false_negative": 0,
+      "precision": 0.952,
+      "recall": 1.0
+    },
+    {
+      "fault": "flatline",
+      "true_positive": 514,
+      "false_positive": 0,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "fault": "missing",
+      "true_positive": 3604,
+      "false_positive": 0,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "imputation": [
+    {
+      "gap_class": "short (<=5 min)",
+      "invalid_samples": 163,
+      "filled_pct": 100.0,
+      "nrmse": 0.124
+    },
+    {
+      "gap_class": "medium (6-60 min)",
+      "invalid_samples": 1744,
+      "filled_pct": 100.0,
+      "nrmse": 0.252
+    },
+    {
+      "gap_class": "long (>60 min)",
+      "invalid_samples": 2279,
+      "filled_pct": 0.0,
+      "nrmse": NaN
+    }
+  ],
+  "imputer_comparison": [
+    {
+      "method": "hybrid",
+      "gap_class": "short (<=5 min)",
+      "invalid_samples": 163,
+      "filled_pct": 100.0,
+      "nrmse": 0.124
+    },
+    {
+      "method": "hybrid",
+      "gap_class": "medium (6-60 min)",
+      "invalid_samples": 1744,
+      "filled_pct": 100.0,
+      "nrmse": 0.252
+    },
+    {
+      "method": "hybrid",
+      "gap_class": "long (>60 min)",
+      "invalid_samples": 2279,
+      "filled_pct": 0.0,
+      "nrmse": NaN
+    },
+    {
+      "method": "linear",
+      "gap_class": "short (<=5 min)",
+      "invalid_samples": 163,
+      "filled_pct": 100.0,
+      "nrmse": 0.124
+    },
+    {
+      "method": "linear",
+      "gap_class": "medium (6-60 min)",
+      "invalid_samples": 1744,
+      "filled_pct": 100.0,
+      "nrmse": 0.279
+    },
+    {
+      "method": "linear",
+      "gap_class": "long (>60 min)",
+      "invalid_samples": 2279,
+      "filled_pct": 0.0,
+      "nrmse": NaN
+    },
+    {
+      "method": "ffill",
+      "gap_class": "short (<=5 min)",
+      "invalid_samples": 163,
+      "filled_pct": 100.0,
+      "nrmse": 0.187
+    },
+    {
+      "method": "ffill",
+      "gap_class": "medium (6-60 min)",
+      "invalid_samples": 1744,
+      "filled_pct": 100.0,
+      "nrmse": 0.4
+    },
+    {
+      "method": "ffill",
+      "gap_class": "long (>60 min)",
+      "invalid_samples": 2279,
+      "filled_pct": 0.0,
+      "nrmse": NaN
+    }
+  ],
+  "units": [
+    {
+      "tag": "BURNING_ZONE_TEMP",
+      "median_abs_error": 0.0,
+      "relative_to_mean_pct": 0.0
+    },
+    {
+      "tag": "FUEL_RATE",
+      "median_abs_error": 0.0,
+      "relative_to_mean_pct": 0.0
+    },
+    {
+      "tag": "KILN_FEED_RATE",
+      "median_abs_error": 0.0,
+      "relative_to_mean_pct": 0.0
+    }
+  ],
+  "lab_alignment": {
+    "lab_samples_in_output": 239,
+    "correctly_aligned": 239,
+    "alignment_rate_pct": 100.0
+  },
+  "lab_alignment_timezone_ignored": {
+    "lab_samples_in_output": 236,
+    "correctly_aligned": 0,
+    "alignment_rate_pct": 0.0
+  },
+  "lab_relation_r": {
+    "timezone_handled": -0.781,
+    "timezone_ignored": -0.085
+  },
+  "correlation_drift": 0.0141,
+  "unrecoverable_pct": 2.34,
+  "quality": [
+    {
+      "tag": "KILN_FEED_RATE",
+      "unit": "t/h",
+      "period_s": 60,
+      "raw_rows": 9680,
+      "expected_slots": 10080,
+      "completeness_pct": 96.02,
+      "duplicates": 15,
+      "out_of_range": 1,
+      "spikes": 6,
+      "flatline_samples": 50,
+      "gaps": 10,
+      "max_gap_min": 281.0,
+      "long_gaps": 1,
+      "noise_sigma": 0.1731
+    },
+    {
+      "tag": "FUEL_RATE",
+      "unit": "t/h",
+      "period_s": 60,
+      "raw_rows": 9722,
+      "expected_slots": 10080,
+      "completeness_pct": 96.45,
+      "duplicates": 19,
+      "out_of_range": 0,
+      "spikes": 7,
+      "flatline_samples": 55,
+      "gaps": 11,
+      "max_gap_min": 147.0,
+      "long_gaps": 1,
+      "noise_sigma": 0.0167
+    },
+    {
+      "tag": "KILN_SPEED",
+      "unit": "rpm",
+      "period_s": 60,
+      "raw_rows": 10015,
+      "expected_slots": 10080,
+      "completeness_pct": 99.36,
+      "duplicates": 19,
+      "out_of_range": 0,
+      "spikes": 8,
+      "flatline_samples": 155,
+      "gaps": 8,
+      "max_gap_min": 39.0,
+      "long_gaps": 0,
+      "noise_sigma": 0.0022
+    },
+    {
+      "tag": "BURNING_ZONE_TEMP",
+      "unit": "degC",
+      "period_s": 60,
+      "raw_rows": 9863,
+      "expected_slots": 10080,
+      "completeness_pct": 97.83,
+      "duplicates": 27,
+      "out_of_range": 2,
+      "spikes": 8,
+      "flatline_samples": 43,
+      "gaps": 18,
+      "max_gap_min": 50.0,
+      "long_gaps": 0,
+      "noise_sigma": 0.6986
+    },
+    {
+      "tag": "ID_FAN_SPEED",
+      "unit": "%",
+      "period_s": 60,
+      "raw_rows": 9542,
+      "expected_slots": 10080,
+      "completeness_pct": 94.66,
+      "duplicates": 16,
+      "out_of_range": 0,
+      "spikes": 4,
+      "flatline_samples": 67,
+      "gaps": 10,
+      "max_gap_min": 358.0,
+      "long_gaps": 1,
+      "noise_sigma": 0.0987
+    },
+    {
+      "tag": "O2",
+      "unit": "%",
+      "period_s": 60,
+      "raw_rows": 9977,
+      "expected_slots": 10080,
+      "completeness_pct": 98.97,
+      "duplicates": 19,
+      "out_of_range": 1,
+      "spikes": 4,
+      "flatline_samples": 58,
+      "gaps": 16,
+      "max_gap_min": 35.0,
+      "long_gaps": 0,
+      "noise_sigma": 0.034
+    },
+    {
+      "tag": "CO",
+      "unit": "ppm",
+      "period_s": 300,
+      "raw_rows": 2001,
+      "expected_slots": 2016,
+      "completeness_pct": 99.26,
+      "duplicates": 7,
+      "out_of_range": 0,
+      "spikes": 8,
+      "flatline_samples": 12,
+      "gaps": 8,
+      "max_gap_min": 20.0,
+      "long_gaps": 0,
+      "noise_sigma": 11.2285
+    },
+    {
+      "tag": "NOX",
+      "unit": "mg/Nm3",
+      "period_s": 300,
+      "raw_rows": 1939,
+      "expected_slots": 2016,
+      "completeness_pct": 96.18,
+      "duplicates": 5,
+      "out_of_range": 0,
+      "spikes": 5,
+      "flatline_samples": 23,
+      "gaps": 10,
+      "max_gap_min": 170.0,
+      "long_gaps": 2,
+      "noise_sigma": 9.3063
+    },
+    {
+      "tag": "SECONDARY_AIR_TEMP",
+      "unit": "degC",
+      "period_s": 60,
+      "raw_rows": 9679,
+      "expected_slots": 10080,
+      "completeness_pct": 96.01,
+      "duplicates": 19,
+      "out_of_range": 1,
+      "spikes": 4,
+      "flatline_samples": 51,
+      "gaps": 13,
+      "max_gap_min": 167.0,
+      "long_gaps": 2,
+      "noise_sigma": 0.584
+    },
+    {
+      "tag": "CLINKER_TEMP",
+      "unit": "degC",
+      "period_s": 60,
+      "raw_rows": 9274,
+      "expected_slots": 10080,
+      "completeness_pct": 92.0,
+      "duplicates": 14,
+      "out_of_range": 0,
+      "spikes": 2,
+      "flatline_samples": 0,
+      "gaps": 14,
+      "max_gap_min": 307.0,
+      "long_gaps": 2,
+      "noise_sigma": 0.365
+    },
+    {
+      "tag": "MILL_POWER",
+      "unit": "kW",
+      "period_s": 60,
+      "raw_rows": 9456,
+      "expected_slots": 10080,
+      "completeness_pct": 93.81,
+      "duplicates": 22,
+      "out_of_range": 0,
+      "spikes": 7,
+      "flatline_samples": 0,
+      "gaps": 13,
+      "max_gap_min": 337.0,
+      "long_gaps": 2,
+      "noise_sigma": 10.7146
+    }
+  ]
+}

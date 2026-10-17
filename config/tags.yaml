@@ -1,0 +1,90 @@
+# Tag registry: single source of truth for canonical tag names, units,
+# physical limits and expected sampling behaviour.
+# `aliases` map historian/DCS-specific names to the canonical name.
+# `source_unit` per alias lets one canonical tag arrive in different units.
+defaults:
+  sample_period_s: 60
+  flatline_min_samples: 20      # identical consecutive readings that indicate a stuck sensor
+  hampel_window: 9              # samples (centered window) for spike detection
+  hampel_sigmas: 6.0
+
+tags:
+  KILN_FEED_RATE:
+    unit: t/h
+    description: Raw meal feed to kiln
+    phys_min: 0
+    phys_max: 400
+    aliases: {KLN_FEED_TPH: t/h}
+  FUEL_RATE:
+    unit: t/h
+    description: Total kiln fuel flow
+    phys_min: 0
+    phys_max: 30
+    aliases: {KLN_FUEL_KGS: kg/s}
+  KILN_SPEED:
+    unit: rpm
+    description: Kiln rotation speed
+    phys_min: 0
+    phys_max: 6
+  BURNING_ZONE_TEMP:
+    unit: degC
+    description: Burning zone temperature
+    phys_min: 1000
+    phys_max: 1700
+    aliases: {BZT_F: degF}
+  ID_FAN_SPEED:
+    unit: "%"
+    description: Induced draft fan speed
+    phys_min: 0
+    phys_max: 100
+  O2:
+    unit: "%"
+    description: Kiln inlet oxygen
+    phys_min: 0
+    phys_max: 21
+  CO:
+    unit: ppm
+    description: Kiln inlet CO
+    sample_period_s: 300
+    flatline_min_samples: 8
+    phys_min: 0
+    phys_max: 5000
+  NOX:
+    unit: mg/Nm3
+    description: Stack NOx
+    sample_period_s: 300
+    flatline_min_samples: 8
+    phys_min: 0
+    phys_max: 2000
+  SECONDARY_AIR_TEMP:
+    unit: degC
+    description: Secondary air temperature
+    phys_min: 300
+    phys_max: 1300
+  CLINKER_TEMP:
+    unit: degC
+    description: Clinker temperature at cooler discharge
+    phys_min: 20
+    phys_max: 500
+  MILL_POWER:
+    unit: kW
+    description: Cement mill main drive power
+    phys_min: 0
+    phys_max: 8000
+
+lab:
+  FREE_LIME:
+    unit: "%"
+    description: Clinker free lime (CaO)
+    phys_min: 0
+    phys_max: 6
+  BLAINE:
+    unit: cm2/g
+    description: Cement fineness (Blaine)
+    phys_min: 2000
+    phys_max: 6000
+
+sources:
+  # Timezone in which each export stamps naive timestamps.
+  signals: {timezone: UTC}
+  lab: {timezone: Asia/Tehran}
